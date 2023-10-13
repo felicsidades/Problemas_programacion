@@ -1,0 +1,98 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+enum class Orientation{
+    N,
+    S,
+    E,
+    W
+}
+
+class Robot{
+    private:
+        int coordenadas[2];
+        Orientation orientacion;
+        float direccion;
+    public:
+        Robot(int posicion0x,int posicion0y,float dir){
+            setPosicion(posicion0x,posicion0y);
+            setDireccion(dir);
+        }
+        void setPosicion(int x, int y){
+            coordenadas[0]=x;
+            coordenadas[1]=y;
+        }
+        int[] getCoordenadas(){
+            return coordenadas;
+        }
+        void setDireccion(float dir){
+            direccion=dir;
+        }
+        void turn_left(){
+            direccion=(direccion-90)%360;
+        }
+        void turn_right(){
+            direccion=(direccion+90)%360;
+        }
+        void forward(int steps){
+            if(direccion%90==0){
+                switch(get_orientation()){
+                    case Orientation::N:
+                        coordenadas[1]+=steps;
+                        break;
+                    case Orientation::E:
+                        coordenadas[0]+=steps;
+                        break;
+                    case Orientation::S:
+                        coordenadas[1]-=steps;
+                        break;
+                    case Orientation::W:
+                        coordenadas[0]-=steps;
+                        break;
+                }
+            }
+        }
+        Orientation get_orientation(){
+            if(direccion>-45 && direccion<=45){
+                return Orientation::N;
+            } else if(direccion>45 && direccion<=135){
+                return Orientation::E;
+            }else if(direccion>135 && direccion<=225){
+                return Orientation::S;
+            }else{
+                return Orientation::W;
+            }
+        }
+}
+
+class Room(){
+    private:
+        int filas,columnas;
+        int tablero[][];
+        Robot robot;
+    public:
+        Room(int n, int m){
+            tablero=tablero[n][m]
+        }
+        void printRoom(){
+            for(int i=0;i<filas;i++){
+                cout << endl;
+                for(int j=0;j<columnas;j++){
+                    if(i=robot::getCoordenadas()[0] && i=robot::getCoordenadas()[1])
+                        cout << robot::get_orientation();
+                    else
+                        cout << "-";
+                }
+            }
+        }
+}
+
+
+
+
+
+
+
+
+

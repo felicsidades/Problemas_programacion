@@ -1,0 +1,97 @@
+#include <iostream>
+#include <String>
+using namespace std;
+//NUM1.NUM2.NUM3.NUM4
+//x.x.x.x necesitas 7 espacios minimos para sacar una direccion
+int buscaSubstring(String){
+    for(int i=1;i<s.size()-6;i++){
+        int j=i;
+        while(j<s.size() && s[j]!=".")
+            j++;
+        i=j;
+        boolean estado[3];
+        estado[0]=compruebaNum1(s,i);
+        int k=j;
+        while(k<s.size() && s[k]!=".")
+            k++;
+        estado[0]=compruebaNum2Num3(s,j,k);
+        int p=k;
+        while(p<s.size() && s[p]!=".")
+            p++;
+        estado[0]=compruebaNum2Num3(s,k.p);
+        int q=p;
+        while(q<s.size() && s[q]!=".")
+            q++;
+        estado[0]=compruebaNum4(s,q);
+        if(estado[0]*estado[1]*estado[2]*estado[3]){
+            for(;i<q+1;i++)
+                cout << s[i]
+        } else{
+            if(estado[3]==true){
+                if(estado[2]==true){
+                    if(estado[1]==true){
+                        i=k;
+                    }
+                }else
+                    i=p;
+            }else
+                i=q;
+
+            
+                
+        }
+    }
+}
+//NUM1 solo tiene que ser como minimo un digito o un multiplo de 10
+bool compruebaNum1(String s,int f){
+    if(!sdigit(s[f-1]))
+        return false;
+    else if(s[f-1]=="0")
+        return true;
+    else{
+        if(s[f-2] && !isdigit(s[f-2]))
+            return false;
+        else if(s[f-2] && s[f-2]!="0")
+            return true;
+        else{
+            if(!isdigit(s[f-3]))
+                return false;
+            else if(s[f-3]=="0")
+                return false;
+            else
+                return s[f-3]<="2" && s[f-2]<="5" && s[f-1]<="5";
+        }
+    }
+}
+//Num2 y Num3
+bool compruebaNum2Num3(String s,int i,int f){
+    if((f-i)>3)
+        return false;
+    else if(f-p==1)
+        return isdigit(s[i])
+    else if(f-i==2){
+        if(isdigit(s[i+1]) && isdigit(s[i+2])){
+            if(s[i+1]==0)
+                return false;
+            else 
+                return true;
+        }else
+            return false
+            
+    }else if((f-i)==3){
+        if(isdigit(s[i+1]) && isdigit(s[i+2]) && isdigit(s[i+3])){
+            if(s[i+1]=="0")
+                return false;
+            else if(s[i+1]<="2" && s[i+2]<="5" && s[i+3]<="5")
+                return true;
+            else
+                return false;
+        }else
+            return false;
+    }
+}
+//Num4 puede ser cualquier digito ya que solo vamos a coger 1
+bool compruebaNum4(String s,int i){
+    return isdigit(s[i+1])
+}
+

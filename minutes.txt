@@ -1,0 +1,15 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int minutos=0;
+int segundos=0;
+int horas=0;
+cout << "Enter time in seconds: "<< endl;
+cin >> segundos;
+minutos=segundos/60
+segundos=segundos%60;
+horas=minutos/60;
+minutos=minutos%60;
+
+cout << setw(2) << setfill(0) << horas << ":" << setw(2) << setfill(0) << minutos << setw(2) << setfill(0) << segundos << endl;
